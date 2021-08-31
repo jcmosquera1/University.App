@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using University.Bl.DTOs;
 using University.BL.Services.Implements;
 using University.Helpers;
@@ -8,7 +6,7 @@ using Xamarin.Forms;
 
 namespace University.ViewModels.Forms
 {
-  public   class EditCourseViewModel : BaseViewModel
+    public   class EditCourseViewModel : BaseViewModel
     {
         #region Fields
         private ApiService _apiService;
