@@ -12,6 +12,8 @@ namespace University.ViewModels
         public CoursesViewModel Courses { get; set; }
         public CreateCourseViewModel CreateCourse { get; set; }
         public EditCourseViewModel EditCourse { get; set; }
+        public CreateOfficeViewModel CreateOffice { get; set; }
+
 
         public MainViewModel ()
         {
@@ -19,6 +21,8 @@ namespace University.ViewModels
             this.Courses = new CoursesViewModel();
 
             this.CreateCourseCommand = new Command(GoToCreateCourse);
+
+
         }
 
 

@@ -103,7 +103,7 @@ namespace University.ViewModels.Forms
                     LastName = this.LastName
                 };
 
-                var ResponseDTO = await _apiService.RequestAPI<StudentsDTO>(Endpoints.URL_BASE_UNIVERSITY_API,
+                var ResponseDTO = await _apiService.RequestAPI<StudentDTO>(Endpoints.URL_BASE_UNIVERSITY_API,
                     Endpoints.GET_STUDENTS,
                      StudentDTO,
                      ApiService.Method.Post);
@@ -111,7 +111,7 @@ namespace University.ViewModels.Forms
                 this.IsRunning = false;
 
                
-                this.Tittle = string.Empty;
+                this.LastName = string.Empty;
                 await Application.Current.MainPage.DisplayAlert("Notificación", "SU PROCESO FUE EXITOSO", "Cerrar");
                 return;
 

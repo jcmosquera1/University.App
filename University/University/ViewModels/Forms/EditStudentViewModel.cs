@@ -8,17 +8,14 @@ using Xamarin.Forms;
 
 namespace University.ViewModels.Forms
 {
-    public class CreateCourseViewModel : BaseViewModel
+ public   class EditStudentViewModel :BaseViewModel
     {
         #region Fields
         private ApiService _apiService;
-        private int _courseID;
-        private string _tittle;
-        private int _credits;
+        private StudentDTO _student ;
         private bool _isEnable;
         private bool _isRunning;
         #endregion
-
 
         #region Properties
 
@@ -36,52 +33,34 @@ namespace University.ViewModels.Forms
         }
 
 
-        public int CourseID
+        public StudentDTO Student
         {
-            get { return this._courseID; }
-            set { this.SetValue(ref this._courseID, value); }
-        }
-
-        public string Tittle
-        {
-            get { return this._tittle; }
-            set { this.SetValue(ref this._tittle, value); }
-        }
-
-
-        public int Credits
-        {
-            get { return this._credits; }
-            set { this.SetValue(ref this._credits, value); }
+            get { return this._student; }
+            set { this.SetValue(ref this._student, value); }
         }
 
         #endregion
-
 
         #region Constructor 
 
-        public CreateCourseViewModel()
+        public EditStudentViewModel(StudentDTO student)
         {
             this._apiService = new ApiService();
-            this.CreateCourseCommand = new Command(CreateCourses);
+            this.EditStudentCommand = new Command(EditStudents);
             this.IsEnable = true;
-            
-        }
+            this.Student = student;
 
+        }
         #endregion
 
 
-        #region Methods 
-
-      
-
-
-        async void CreateCourses()
+        #region Methods
+        async void EditStudents()
         {
             try
             {
 
-                if (string.IsNullOrEmpty(this.Tittle) || this.Credits == 0|| this.CourseID == 0)
+                if (string.IsNullOrEmpty(this.Student.LastName) || string.IsNullOrEmpty(this.Student.FirstMidName) )
                 {
                     await Application.Current.MainPage.DisplayAlert("Notificación", "todos los campos son requeridos", "Cerrar");
                     return;
@@ -103,30 +82,18 @@ namespace University.ViewModels.Forms
 
                 }
 
-                var CourseDTO = new CourseDTO
-                {
-                    CourseID = this.CourseID,
-                    Title = this.Tittle,
-                    Credits = this.Credits
-                };
-
-                var responseDTO = await _apiService.RequestAPI<CourseDTO>(Endpoints.URL_BASE_UNIVERSITY_API,
-                    Endpoints.POST_COURSES,
-                     CourseDTO,
-                     ApiService.Method.Post);
 
 
-                var message = "The process is successful";
-                if (responseDTO.Code < 200 || responseDTO.Code > 299)
-                    message = responseDTO.Message;
-
+                var ResponseDTO = await _apiService.RequestAPI<CourseDTO>(Endpoints.URL_BASE_UNIVERSITY_API,
+                    Endpoints.PUT_COURSES + this.Student.LastName,
+                     this.Student,
+                     ApiService.Method.Put);
                 this.IsEnable = true;
                 this.IsRunning = false;
 
-                this.CourseID = this.Credits = 0;
-                this.Tittle = string.Empty;
-                await Application.Current.MainPage.DisplayAlert("Notificación", message, " Cerrar");
-
+                this.Student.ID = this.Student.ID = 0;
+                this.Student.LastName = string.Empty;
+                await Application.Current.MainPage.DisplayAlert("Notificación", "SU PROCESO FUE EXITOSO", "Cerrar");
                 return;
 
             }
@@ -145,15 +112,15 @@ namespace University.ViewModels.Forms
         }
         #endregion 
 
+
+
         #region Commands
 
-        public Command CreateCourseCommand { get; set; }
+        public Command EditStudentCommand { get; set; }
 
 
 
 
         #endregion
-
-
     }
 }
