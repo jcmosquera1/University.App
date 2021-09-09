@@ -82,7 +82,7 @@ namespace University.ViewModels.Forms
                      null,
                      ApiService.Method.Get);
                 this._allStudents = (List<StudentItemViewModel>)responseDTO.Data;
-                this.Students = new ObservableCollection<CourseItemViewModel>(this._allStudents);
+                this.Students = new ObservableCollection<StudentItemViewModel>(this._allStudents);
 
                 this.IsRefreshing = false;
 
@@ -100,7 +100,7 @@ namespace University.ViewModels.Forms
         {
             var students = this._allStudents;
             if (!string.IsNullOrEmpty(this.Filter))
-                students = students.Where(x => x.Title.ToLower().Contains(this.Filter)).ToList();
+                students = students.Where(x => x.FullName.ToLower().Contains(this.Filter)).ToList();
             this.Students = new ObservableCollection<StudentItemViewModel>(students);
         }
 

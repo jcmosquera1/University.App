@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace University.Views.Forms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateStudentPage : ContentPage
+    public partial class EditOfficePage : ContentPage
     {
-        public CreateStudentPage()
+        public EditOfficePage()
         {
             InitializeComponent();
         }

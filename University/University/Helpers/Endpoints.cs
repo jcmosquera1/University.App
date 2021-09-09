@@ -30,7 +30,22 @@ namespace University.Helpers
         public static string POST_OFFICES { get; set; } = "api/OfficeAssignments/";
 
 
+
+
+        #region Offices 
+
+
+        public static string PUT_OFFICES { get; set; } = "api/OfficeAssignments/";
+
+        #endregion
+
+
+
+
+
     }
+
+
 
 
 

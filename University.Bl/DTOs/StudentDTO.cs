@@ -17,6 +17,7 @@ namespace University.Bl.DTOs
         public string LastName { get; set; }
         [Required(ErrorMessage = "The FirstMidName is required")]
         public string FirstMidName { get; set; }
+        public string FullName { get; set; }
    
 
     }

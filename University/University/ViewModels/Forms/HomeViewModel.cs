@@ -10,6 +10,6 @@ namespace University.ViewModels.Forms
         #region
         public Command GetCoursesCommand { get; set; }
 
-        #region
+        #endregion
     }
 }

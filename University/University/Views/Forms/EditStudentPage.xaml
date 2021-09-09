@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             x:Class="University.Views.Forms.EditCoursePage">
+             x:Class="University.Views.Forms.EditStudentPage">
     
     
     <ContentPage.Content>
@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <Label  Text="ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
-                <Entry   IsEnabled="False" Grid.Row="0" Grid.Column="1" Text="{Binding.StudentID}" />
+                <Entry   IsEnabled="False" Grid.Row="0" Grid.Column="1" Text="{Binding ID}" />
 
 
                 <Label  Text="Tittle" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" />
@@ -61,4 +61,4 @@
 
 
 
-</TabbedPage>
+</ContentPage>

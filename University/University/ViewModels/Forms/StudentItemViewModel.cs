@@ -8,8 +8,8 @@ using University.Bl.DTOs;
 
 namespace University.ViewModels.Forms
 {
-   public class StudentItemViewModel
+   public class StudentItemViewModel : StudentDTO
     {
-
+        
     }
 }
